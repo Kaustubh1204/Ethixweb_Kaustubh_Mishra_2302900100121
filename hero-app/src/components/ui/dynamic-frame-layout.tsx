@@ -96,6 +96,7 @@ function FrameComponent({
                 isHovered ? "opacity-0" : "opacity-100"
               }`}
               src={video}
+              autoPlay
               loop
               muted
               playsInline
@@ -191,13 +192,12 @@ interface DynamicFrameLayoutProps {
 }
 
 export function DynamicFrameLayout({ 
-  frames: initialFrames, 
+  frames, 
   className,
   showFrames = false,
   hoverSize = 6,
   gapSize = 4
 }: DynamicFrameLayoutProps) {
-  const [frames] = useState<Frame[]>(initialFrames)
   const [hovered, setHovered] = useState<{ row: number; col: number } | null>(null)
 
   const maxRow = Math.max(...frames.map((f) => Math.floor(f.defaultPos.y / 4)), 0)
