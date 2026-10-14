@@ -2,7 +2,7 @@
 
 import React from "react";
 import { TestimonialsColumn, type TestimonialItem } from "@/components/ui/testimonials-columns-1";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const testimonials: TestimonialItem[] = [
   {

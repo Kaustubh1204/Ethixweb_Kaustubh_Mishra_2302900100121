@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 
 export interface Frame {
   id: number
@@ -51,18 +51,38 @@ function FrameComponent({
   showFrame,
   isHovered,
 }: FrameComponentProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [inView, setInView] = useState(false)
 
   useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting)
+      },
+      { rootMargin: "250px" }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!inView) {
+      videoRef.current?.pause()
+      return
+    }
     if (isHovered) {
       videoRef.current?.pause()
     } else {
       videoRef.current?.play().catch(() => {})
     }
-  }, [isHovered])
+  }, [isHovered, inView])
 
   return (
     <div
+      ref={containerRef}
       className={`relative ${className}`}
       style={{
         width,
@@ -95,7 +115,8 @@ function FrameComponent({
               className={`w-full h-full object-cover transition-opacity duration-300 ${
                 isHovered ? "opacity-0" : "opacity-100"
               }`}
-              src={video}
+              src={inView ? video : undefined}
+              preload="none"
               loop
               muted
               playsInline

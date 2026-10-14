@@ -7,10 +7,11 @@ const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
   variable: "--font-bebas",
   display: "swap",
+  preload: true,
 });
 
 const playfairDisplay = Playfair_Display({
-  weight: ["400", "500", "600"],
+  weight: ["400", "600"],
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
@@ -19,7 +20,8 @@ const playfairDisplay = Playfair_Display({
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -40,10 +42,6 @@ export default function RootLayout({
       lang="en"
       className={`${bebasNeue.variable} ${playfairDisplay.variable} ${hostGrotesk.variable}`}
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body className="antialiased overflow-x-hidden bg-[#ebdc0b]">
         {/* Universal Navbar */}
         <Navbar />

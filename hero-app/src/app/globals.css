@@ -89,6 +89,18 @@ html.lenis, html.lenis body {
 /* ==========================================================================
    Full-Viewport Dark Grey Preloader Overlay
    ========================================================================== */
+@keyframes preloaderDismiss {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
 .pre-loader-overlay,
 .pre-loader {
   position: fixed !important;
@@ -103,7 +115,15 @@ html.lenis, html.lenis body {
   padding: 3rem !important;
   overflow: hidden !important;
   pointer-events: none !important;
-  will-change: transform;
+  will-change: opacity;
+  animation: preloaderDismiss 0.40s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@media (max-width: 768px) {
+  .pre-loader-overlay,
+  .pre-loader {
+    animation: preloaderDismiss 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  }
 }
 
 .preloader-content {

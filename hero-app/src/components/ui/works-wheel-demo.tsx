@@ -49,33 +49,64 @@ export default function WorksWheelDemo() {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    let trigger: any = null;
+    let initialized = false;
 
-    const container = containerRef.current;
-    if (!container) return;
+    const init = () => {
+      if (initialized) return;
+      initialized = true;
 
-    // Pin across 5x viewport height (500vh scroll distance) to give ample duration
-    // for all 9 cards in the drum to rotate through smoothly before release.
-    const trigger = ScrollTrigger.create({
-      trigger: container,
-      start: "top top",
-      end: () => `+=${window.innerHeight * 5}px`,
-      pin: true,
-      pinSpacing: true,
-      scrub: 1.2,
-      onUpdate: (self) => {
-        setScrollProgress(self.progress);
-      },
-    });
+      gsap.registerPlugin(ScrollTrigger);
 
-    const handleResize = () => {
-      ScrollTrigger.refresh();
+      const container = containerRef.current;
+      if (!container) return;
+
+      // Pin across 5x viewport height (500vh scroll distance) to give ample duration
+      // for all cards in the drum to rotate through smoothly before release.
+      trigger = ScrollTrigger.create({
+        trigger: container,
+        start: "top top",
+        end: () => `+=${window.innerHeight * 5}px`,
+        pin: true,
+        pinSpacing: true,
+        scrub: 1.2,
+        onUpdate: (self) => {
+          setScrollProgress(self.progress);
+        },
+      });
+
+      const handleResize = () => {
+        ScrollTrigger.refresh();
+      };
+      window.addEventListener("resize", handleResize);
     };
-    window.addEventListener("resize", handleResize);
+
+    // If user scrolls early, initialize immediately
+    const onScrollOrTouch = () => {
+      window.removeEventListener("scroll", onScrollOrTouch);
+      window.removeEventListener("wheel", onScrollOrTouch);
+      window.removeEventListener("touchmove", onScrollOrTouch);
+      init();
+    };
+
+    window.addEventListener("scroll", onScrollOrTouch, { passive: true });
+    window.addEventListener("wheel", onScrollOrTouch, { passive: true });
+    window.addEventListener("touchmove", onScrollOrTouch, { passive: true });
+
+    const idleId = typeof window !== "undefined" && "requestIdleCallback" in window
+      ? (window as any).requestIdleCallback(init, { timeout: 1500 })
+      : setTimeout(init, 500);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      trigger.kill();
+      window.removeEventListener("scroll", onScrollOrTouch);
+      window.removeEventListener("wheel", onScrollOrTouch);
+      window.removeEventListener("touchmove", onScrollOrTouch);
+      if (typeof window !== "undefined" && "cancelIdleCallback" in window) {
+        (window as any).cancelIdleCallback(idleId);
+      } else {
+        clearTimeout(idleId);
+      }
+      if (trigger) trigger.kill();
     };
   }, []);
 
