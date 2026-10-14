@@ -1,0 +1,54 @@
+.sh-wrap {
+  --ink: #000;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.sh-pill {
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  padding: 0.6rem 2rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+.sh-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 11vw, 12rem);
+  line-height: 0.85; /* tight stacking */
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ink);
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.sh-line {
+  display: block;
+}
+
+.sh-italic {
+  font-style: italic;
+}
+
+.sh-tagline {
+  font-size: clamp(1.1rem, 2.4vw, 2rem);
+  margin: 2rem 0 1.5rem;
+  color: var(--ink);
+}
+
+.sh-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}

@@ -1,0 +1,679 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Fascinate&family=Fascinate+Inline&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Imperial+Script&family=Instrument+Serif:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Limelight&family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rouge+Script&family=Special+Gothic+Condensed+One&display=swap');
+@import "tailwindcss";
+
+:root {
+  --font-heading: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+  --font-body: 'Poppins', 'Fira Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-nav: 'Special Gothic Condensed One', 'Poppins', sans-serif;
+  --font-brand: 'Bodoni Moda', 'Fascinate Inline', serif;
+}
+
+.font-heading {
+  font-family: var(--font-heading) !important;
+}
+
+.font-body {
+  font-family: var(--font-body) !important;
+}
+
+.font-nav {
+  font-family: var(--font-nav) !important;
+}
+
+.font-brand {
+  font-family: var(--font-brand) !important;
+}
+
+.font-fascinate {
+  font-family: 'Fascinate', cursive, sans-serif !important;
+}
+
+.font-gothic {
+  font-family: 'Special Gothic Condensed One', sans-serif !important;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #141414;
+  }
+}
+
+/* Custom utility & Lenis smooth scrolling helpers */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Base image styling for Hero images */
+.hero-imgs img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  padding: 3em;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Full-Viewport Dark Grey Preloader Overlay
+   ========================================================================== */
+.pre-loader-overlay,
+.pre-loader {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: #1a1a1a !important;
+  z-index: 50 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-end !important;
+  padding: 3rem !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  will-change: transform;
+}
+
+.preloader-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  width: fit-content !important;
+  gap: 4px;
+}
+
+.preloader-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-end !important;
+  gap: 1rem !important;
+  white-space: nowrap !important;
+}
+
+.loading-label,
+.loading-text {
+  font-family: var(--font-bebas), "Timmons NY", sans-serif;
+  font-size: 60px;
+  line-height: 60px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff !important;
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+/* Rolling numbers counter */
+.counter {
+  height: 100px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  font-family: var(--font-bebas), "Timmons NY", sans-serif;
+  font-size: 100px;
+  font-weight: 400;
+  line-height: 150px !important;
+  color: #ffffff !important;
+  clip-path: polygon(0 0, 100% 0, 100% 100px, 0 100px) !important;
+  user-select: none !important;
+  overflow: hidden !important;
+}
+
+.digit-1,
+.digit-2,
+.digit-3 {
+  position: relative !important;
+  top: -15px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 48px !important;
+  color: #ffffff !important;
+}
+
+.num {
+  height: 150px !important;
+  line-height: 150px !important;
+  display: block !important;
+  text-align: center !important;
+  color: #ffffff !important;
+}
+
+.percent-symbol {
+  font-family: var(--font-bebas), "Timmons NY", sans-serif;
+  font-size: 65px;
+  line-height: 65px;
+  color: #ffffff !important;
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+/* Progress bar expanding across bottom */
+.progress-bar-container,
+.progress-bar-track {
+  position: relative !important;
+  width: 100% !important;
+  height: 4px !important;
+  background: transparent !important;
+  overflow: hidden !important;
+  margin-top: 2px !important;
+}
+
+.progress-bar {
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #ffffff !important;
+  transform-origin: right center !important;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   Hero & Background Elements
+   ========================================================================== */
+.hero-imgs {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  z-index: 0 !important;
+}
+
+.hero-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+  will-change: clip-path;
+}
+
+.clip-counter {
+  clip-path: polygon(0 0, 100% 0, 100% 100px, 0 100px);
+}
+
+.clip-image-hidden {
+  clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+}
+
+.clip-header {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Website foreground container */
+.website-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 1.5em;
+  }
+
+  .pre-loader-overlay {
+    padding: 16px 20px !important;
+  }
+
+  .counter {
+    height: 70px !important;
+    font-size: 70px !important;
+    line-height: 100px !important;
+    clip-path: polygon(0 0, 100% 0, 100% 70px, 0 70px) !important;
+  }
+
+  .digit-1,
+  .digit-2,
+  .digit-3 {
+    width: 32px !important;
+    top: -10px !important;
+  }
+
+  .num {
+    height: 100px !important;
+    line-height: 100px !important;
+  }
+
+  .loading-label {
+    font-size: 30px !important;
+    line-height: 40px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .percent-symbol {
+    font-size: 45px !important;
+    line-height: 45px !important;
+    padding-bottom: 4px !important;
+  }
+
+  nav > div {
+    font-size: 24px;
+  }
+}
+
+/* GPU Hardware Acceleration */
+.pre-loader-overlay,
+.digit-1,
+.digit-2,
+.digit-3,
+.progress-bar,
+.hero,
+.hero-imgs,
+.hero-img,
+h1 span,
+nav {
+  will-change: transform, clip-path;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@keyframes fsh-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Frame Sequence Hero CSS */
+.fsh-root {
+  position: relative;
+  background-color: #FFFFFE;
+  color: #09090b;
+}
+
+.fsh-loader {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fsh-loader-done {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+.fsh-loader-text {
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.fsh-loader-track {
+  width: 120px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.fsh-loader-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #ff9f3a, #ff6f9c, #5e9bff);
+  transition: width 0.15s ease-out;
+}
+
+.fsh-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 40;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.fsh-nav-scrolled {
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fsh-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.fsh-brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ff9f3a;
+}
+
+.fsh-nav-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .fsh-nav-links {
+    display: flex;
+  }
+}
+
+.fsh-nav-links a {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+}
+
+.fsh-nav-links a:hover {
+  color: #ffffff;
+}
+
+.fsh-cta {
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.fsh-cta:hover {
+  opacity: 0.9;
+}
+
+.fsh-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fsh-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fsh-canvas {
+  width: 90vw;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: 75vh;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
+}
+
+.fsh-copy {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 20;
+  pointer-events: none;
+  width: 90%;
+  max-width: 800px;
+}
+
+.fsh-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.fsh-title-dark {
+  color: #ffffff;
+}
+
+.fsh-title-rainbow {
+  background: linear-gradient(135deg, #ff9f3a, #ff6f9c, #5e9bff, #a37bff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fsh-shimmer 6s ease infinite;
+}
+
+.fsh-sub {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: opacity 0.3s ease;
+}
+
+.fsh-sub-hidden {
+  opacity: 0;
+}
+
+.fsh-cards {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  width: 90%;
+  max-width: 440px;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .fsh-cards {
+    bottom: 9%;
+    width: 92%;
+    max-width: 420px;
+  }
+}
+
+@media (max-height: 700px) {
+  .fsh-cards {
+    bottom: 6%;
+  }
+}
+
+.fsh-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.fsh-card-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.fsh-card-prev {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.96);
+}
+
+.fsh-card-inner {
+  position: relative;
+  padding: 1.25rem 1.45rem;
+  background: #000000;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1.35rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+@media (min-width: 769px) {
+  .fsh-card-inner {
+    padding: 1.45rem 1.75rem;
+  }
+}
+
+.fsh-card-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 130px;
+  height: 130px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.2;
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+.fsh-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.fsh-card-num {
+  font-family: monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fsh-card-num strong {
+  color: var(--c, #ffffff);
+}
+
+.fsh-card-icon {
+  font-size: 1.1rem;
+  color: var(--c, #ffffff);
+}
+
+.fsh-card-title {
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.fsh-card-desc {
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  margin-bottom: 1.1rem;
+}
+
+.fsh-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.15rem;
+}
+
+.fsh-ticks {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.fsh-tick {
+  width: 24px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  overflow: hidden;
+  display: block;
+}
+
+.fsh-tick span {
+  display: block;
+  height: 100%;
+  background: var(--c, #ffffff);
+  transform-origin: left;
+}
+
+.fsh-card-label {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.fsh-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 30;
+}
+
+.fsh-progress-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #ff9f3a, #ff6f9c, #5e9bff, #a37bff);
+}
