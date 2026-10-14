@@ -26,7 +26,7 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({
         {title.split("").map((char, index) => (
           <span
             key={index}
-            className="char-span inline-block relative translate-y-0 will-change-transform"
+            className="char-span inline-block relative translate-y-[400px] will-change-transform"
           >
             {char === " " ? "\u00A0" : char}
           </span>

@@ -87,43 +87,27 @@ export function FrameSequenceHero({
   };
 
   useEffect(() => {
-    const root = spacerRef.current;
-    if (!root) return;
-
-    let started = false;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started) {
-          started = true;
-          observer.disconnect();
-
-          const eager = Math.min(eagerCount, frameCount);
-          const loadOne = (i: number) => {
-            const img = new Image();
-            img.decoding = "async";
-            img.src = framePath(i + 1);
-            const onSettle = () => {
-              loadedRef.current += 1;
-              const pct = Math.round((loadedRef.current / frameCount) * 100);
-              setLoadPct(pct);
-              if (loadedRef.current === eager) {
-                setLoaderDone(true);
-                for (let j = eager; j < frameCount; j++) loadOne(j);
-              }
-            };
-            img.onload = onSettle;
-            img.onerror = onSettle;
-            cacheRef.current[i] = img;
-          };
-          for (let i = 0; i < eager; i++) loadOne(i);
+    const eager = Math.min(eagerCount, frameCount);
+    const loadOne = (i: number) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = framePath(i + 1);
+      const onSettle = () => {
+        loadedRef.current += 1;
+        const pct = Math.round((loadedRef.current / frameCount) * 100);
+        setLoadPct(pct);
+        if (loadedRef.current === eager) {
+          setLoaderDone(true);
+          for (let j = eager; j < frameCount; j++) loadOne(j);
         }
-      },
-      { rootMargin: "400px" }
-    );
-
-    observer.observe(root);
-    return () => observer.disconnect();
-  }, [frameCount, eagerCount, framePath]);
+      };
+      img.onload = onSettle;
+      img.onerror = onSettle;
+      cacheRef.current[i] = img;
+    };
+    for (let i = 0; i < eager; i++) loadOne(i);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [frameCount, eagerCount]);
 
   useEffect(() => {
     let trigger: any;

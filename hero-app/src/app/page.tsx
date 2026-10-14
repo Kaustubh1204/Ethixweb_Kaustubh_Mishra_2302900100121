@@ -1,13 +1,11 @@
 import React from "react";
-import dynamic from "next/dynamic";
 import { HeroApp } from "@/components/HeroApp";
+import AboutUS from "@/components/AboutUS";
 import Paragraph from "@/components/Paragraph";
-
-const AboutUS = dynamic(() => import("@/components/AboutUS"), { ssr: true });
-const Robust = dynamic(() => import("@/components/ui/robust"), { ssr: true });
-const WorksWheelDemo = dynamic(() => import("@/components/ui/works-wheel-demo"), { ssr: true });
-const GlobalOperationsNetwork = dynamic(() => import("@/components/ui/global-operations-network"), { ssr: true });
-const Testimonials = dynamic(() => import("@/components/ui/testimonials-demo"), { ssr: true });
+import Robust from "@/components/ui/robust";
+import WorksWheelDemo from "@/components/ui/works-wheel-demo";
+import GlobalOperationsNetwork from "@/components/ui/global-operations-network";
+import Testimonials from "@/components/ui/testimonials-demo";
 
 export default function Home() {
   return (

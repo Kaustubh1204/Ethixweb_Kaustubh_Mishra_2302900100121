@@ -128,20 +128,6 @@ export function WorksWheel({
   const [active, setActive] = React.useState(0);
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   const [stage, setStage] = React.useState<Stage>({ w: 0, h: 0 });
-  const [inView, setInView] = React.useState(false);
-
-  React.useEffect(() => {
-    const el = stageRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setInView(entry.isIntersecting);
-      },
-      { rootMargin: "250px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const count = items.length;
   const last = Math.max(count - 1, 0);
@@ -373,9 +359,8 @@ export function WorksWheel({
                   <span className="bg-muted shadow-foreground/12 relative block size-full overflow-hidden rounded-lg shadow-[0_18px_40px_-18px_var(--tw-shadow-color)]">
                     {item.video ? (
                       <video
-                        src={inView ? item.video : undefined}
-                        preload="none"
-                        autoPlay={inView}
+                        src={item.video}
+                        autoPlay
                         muted
                         loop
                         playsInline

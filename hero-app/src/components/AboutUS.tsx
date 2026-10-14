@@ -37,28 +37,21 @@ export default function AboutUS() {
   const duplicatesLayerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let cleanup: (() => void) | null = null;
-    let initialized = false;
+    gsap.registerPlugin(ScrollTrigger);
 
-    const init = () => {
-      if (initialized) return;
-      initialized = true;
+    // Initialize smooth scrolling with Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
 
-      gsap.registerPlugin(ScrollTrigger);
+    lenis.on("scroll", ScrollTrigger.update);
 
-      // Initialize smooth scrolling with Lenis
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
-
-      lenis.on("scroll", ScrollTrigger.update);
-
-      const tickerCallback = (time: number) => {
-        lenis.raf(time * 1000);
-      };
-      gsap.ticker.add(tickerCallback);
-      gsap.ticker.lagSmoothing(0);
+    const tickerCallback = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(tickerCallback);
+    gsap.ticker.lagSmoothing(0);
 
     const animatedIcons = animatedIconsRef.current;
     const heroHeader = heroHeaderRef.current;
@@ -366,41 +359,12 @@ export default function AboutUS() {
     };
     window.addEventListener("resize", handleResize);
 
-      cleanup = () => {
-        window.removeEventListener("resize", handleResize);
-        trigger.kill();
-        gsap.ticker.remove(tickerCallback);
-        lenis.destroy();
-        cleanupDuplicates();
-      };
-    };
-
-    // If user scrolls before idle, initialize immediately
-    const onScrollOrTouch = () => {
-      window.removeEventListener("scroll", onScrollOrTouch);
-      window.removeEventListener("wheel", onScrollOrTouch);
-      window.removeEventListener("touchmove", onScrollOrTouch);
-      init();
-    };
-
-    window.addEventListener("scroll", onScrollOrTouch, { passive: true });
-    window.addEventListener("wheel", onScrollOrTouch, { passive: true });
-    window.addEventListener("touchmove", onScrollOrTouch, { passive: true });
-
-    const idleId = typeof window !== "undefined" && "requestIdleCallback" in window
-      ? (window as any).requestIdleCallback(init, { timeout: 1200 })
-      : setTimeout(init, 500);
-
     return () => {
-      window.removeEventListener("scroll", onScrollOrTouch);
-      window.removeEventListener("wheel", onScrollOrTouch);
-      window.removeEventListener("touchmove", onScrollOrTouch);
-      if (typeof window !== "undefined" && "cancelIdleCallback" in window) {
-        (window as any).cancelIdleCallback(idleId);
-      } else {
-        clearTimeout(idleId);
-      }
-      if (cleanup) cleanup();
+      window.removeEventListener("resize", handleResize);
+      trigger.kill();
+      gsap.ticker.remove(tickerCallback);
+      lenis.destroy();
+      cleanupDuplicates();
     };
   }, []);
 
