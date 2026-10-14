@@ -54,12 +54,12 @@ export default function WorksWheelDemo() {
     const container = containerRef.current;
     if (!container) return;
 
-    // Pin across 5x viewport height (500vh scroll distance) to give ample duration
-    // for all 9 cards in the drum to rotate through smoothly before release.
+    // Pin across responsive viewport height scroll distance:
+    const isMobile = window.innerWidth < 768;
     const trigger = ScrollTrigger.create({
       trigger: container,
       start: "top top",
-      end: () => `+=${window.innerHeight * 5}px`,
+      end: () => `+=${window.innerHeight * (isMobile ? 3 : 5)}px`,
       pin: true,
       pinSpacing: true,
       scrub: 1.2,
@@ -82,7 +82,7 @@ export default function WorksWheelDemo() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen bg-[#FFFFFE] text-[#09090b] border-t border-black/10 overflow-hidden"
+      className="relative w-full h-[100svh] bg-[#FFFFFE] text-[#09090b] border-t border-black/10 overflow-hidden"
     >
       <WorksWheel
         items={WORKS}

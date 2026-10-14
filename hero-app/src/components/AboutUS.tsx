@@ -142,11 +142,18 @@ export default function AboutUS() {
       duplicate.style.display = "flex";
     };
 
-    // ScrollTrigger instance across 8x viewport height scrubbed sequence:
+    // Responsive ScrollTrigger distance and stage timing:
+    const isMobile = window.innerWidth < 768;
+    const scrollMultiplier = isMobile ? 2.2 : 5;
+    const stage1End = isMobile ? 0.15 : 0.22;
+    const stage2End = isMobile ? 0.30 : 0.44;
+    const stage3End = isMobile ? 0.42 : 0.56;
+
+    // ScrollTrigger instance across scrubbed sequence:
     const trigger = ScrollTrigger.create({
       trigger: heroSection,
       start: "top top",
-      end: `+=${window.innerHeight * 8}px`,
+      end: () => `+=${window.innerHeight * scrollMultiplier}px`,
       pin: true,
       pinSpacing: true,
       scrub: 1,
@@ -155,21 +162,22 @@ export default function AboutUS() {
         const heroProgress = progress;
 
         // Reset text segment opacity if scrubbed back before Stage 4
-        if (heroProgress <= 0.60) {
+        if (heroProgress <= stage3End) {
           textSegments.forEach((segment) => {
-            gsap.set(segment, { opacity: 0 });
+            gsap.set(segment, { opacity: isMobile ? 0.2 : 0 });
           });
         }
 
         /* ----------------------------------------------------
            Stage 1: Vertical container movement & icon staggers
         ---------------------------------------------------- */
-        if (heroProgress <= 0.24) {
-          const moveProgress = heroProgress / 0.24;
+        if (heroProgress <= stage1End) {
+          const moveProgress = heroProgress / stage1End;
           const containerMoveY = -window.innerHeight * 0.3 * moveProgress;
 
-          if (heroProgress <= 0.12) {
-            const headerProgress = heroProgress / 0.12;
+          const headerThreshold = stage1End / 2;
+          if (heroProgress <= headerThreshold) {
+            const headerProgress = heroProgress / headerThreshold;
             const headerMoveY = -50 * headerProgress;
             const headerOpacity = 1 - headerProgress;
 
@@ -219,8 +227,8 @@ export default function AboutUS() {
         /* ----------------------------------------------------
            Stage 2: Scaling & transition toward viewport center
         ---------------------------------------------------- */
-        } else if (heroProgress <= 0.48) {
-          const scaleProgress = (heroProgress - 0.24) / 0.24;
+        } else if (heroProgress <= stage2End) {
+          const scaleProgress = (heroProgress - stage1End) / (stage2End - stage1End);
 
           gsap.set(heroHeader, {
             transform: `translate(-50%, calc(-50% + -50px))`,
@@ -255,8 +263,8 @@ export default function AboutUS() {
         /* ----------------------------------------------------
            Stage 3: Icon Duplication & morphing to paragraph placeholders
         ---------------------------------------------------- */
-        } else if (heroProgress <= 0.60) {
-          const moveProgress = (heroProgress - 0.48) / 0.12;
+        } else if (heroProgress <= stage3End) {
+          const moveProgress = (heroProgress - stage2End) / (stage3End - stage2End);
 
           gsap.set(heroHeader, {
             transform: `translate(-50%, calc(-50% + -100px))`,
@@ -332,9 +340,11 @@ export default function AboutUS() {
 
           // Randomized word fade in
           const totalWords = textAnimationOrder.length;
+          const textSpan = 0.98 - stage3End;
+          const step = textSpan / Math.max(1, totalWords);
+
           textAnimationOrder.forEach((item, randomIndex) => {
-            const step = 0.35 / Math.max(1, totalWords);
-            const segmentStart = 0.60 + randomIndex * step;
+            const segmentStart = stage3End + randomIndex * step;
             const segmentEnd = Math.min(0.98, segmentStart + step * 1.5);
 
             const segmentProgress = gsap.utils.mapRange(
@@ -387,19 +397,19 @@ export default function AboutUS() {
         {/* Phase 1 Hero Header: Heading 'about us' and subtitle */}
         <div
           ref={heroHeaderRef}
-          className="hero-header absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[65%] text-center flex flex-col items-center gap-4 will-change-[transform,opacity] z-10"
+          className="hero-header absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] sm:w-[90%] md:w-[65%] text-center flex flex-col items-center gap-2 sm:gap-4 will-change-[transform,opacity] z-10"
         >
-          <h1 className="text-[14vw] md:text-[8.5vw] font-black tracking-tight leading-[0.9] uppercase select-none text-[#09090b] drop-shadow-sm">
+          <h1 className="text-[12vw] sm:text-[10vw] md:text-[8.5vw] font-black tracking-tight leading-[0.9] uppercase select-none text-[#09090b] drop-shadow-sm">
             about us
           </h1>
-          <p className="text-lg md:text-2xl font-normal text-black/70 max-w-2xl leading-snug">
+          <p className="text-sm sm:text-lg md:text-2xl font-normal text-black/70 max-w-2xl leading-snug px-2">
             A small, senior team. No account managers.
           </p>
         </div>
 
         {/* Phase 3 & 4 Central Narrative Paragraph with 5 inline placeholder slots */}
-        <div className="relative max-w-5xl px-4 sm:px-6 md:px-12 text-center z-10 pointer-events-none">
-          <p className="text-base sm:text-xl md:text-2xl lg:text-[2rem] font-bold leading-[1.6] sm:leading-[1.5] tracking-tight text-[#141414]">
+        <div className="relative max-w-5xl px-3 sm:px-6 md:px-12 text-center z-10 pointer-events-none">
+          <p className="text-sm sm:text-base md:text-xl lg:text-2xl font-bold leading-[1.6] sm:leading-[1.5] tracking-tight text-[#141414]">
             {PARAGRAPH_PARTS.map((part, pIndex) => {
               if (part.type === "placeholder") {
                 const pIdx = part.placeholderIndex ?? 0;
@@ -426,7 +436,7 @@ export default function AboutUS() {
                         ref={(el) => {
                           textSegmentsRef.current[currentWordIndex] = el;
                         }}
-                        className="text-segment inline-block opacity-0 mr-1.5 md:mr-2 transition-opacity duration-75 select-none"
+                        className="text-segment inline-block opacity-0 mr-1 sm:mr-1.5 md:mr-2 transition-opacity duration-75 select-none"
                       >
                         {word}
                       </span>
@@ -438,10 +448,10 @@ export default function AboutUS() {
           </p>
         </div>
 
-        {/* Animated Icons bottom docking bar */}
+        {/* Animated Icons bottom docking bar - positioned absolute inside pinned hero section */}
         <div
           ref={animatedIconsRef}
-          className="animated-icons fixed bottom-3 sm:bottom-4 md:bottom-6 left-2 sm:left-4 md:left-8 right-2 sm:right-4 md:right-8 flex items-center justify-center gap-1.5 sm:gap-3 md:gap-6 will-change-transform z-20"
+          className="animated-icons absolute bottom-3 sm:bottom-4 md:bottom-6 left-2 sm:left-4 md:left-8 right-2 sm:right-4 md:right-8 flex items-center justify-center gap-1.5 sm:gap-3 md:gap-6 will-change-transform z-20 pointer-events-auto"
         >
           {ICONS.map((icon, idx) => (
             <div

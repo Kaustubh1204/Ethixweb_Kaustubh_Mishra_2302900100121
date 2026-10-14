@@ -1,7 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
 import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Contact Us — EthixWeb",

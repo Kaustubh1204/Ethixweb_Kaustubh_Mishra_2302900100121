@@ -88,41 +88,41 @@ export default function ContactSection() {
   return (
     <section className="relative w-full min-h-screen bg-[#FFFFFE] text-[#09090b] flex flex-col justify-between overflow-hidden selection:bg-black selection:text-white pt-12 pb-4">
       {/* 2. Main Two-Column Layout */}
-      <main className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start flex-1 z-10">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-6 sm:py-8 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start flex-1 z-10">
         {/* Left Column: Heading, Subtitle, & Details */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 flex flex-col justify-between space-y-12 md:space-y-16"
+          className="lg:col-span-5 flex flex-col justify-between space-y-8 sm:space-y-12 md:space-y-16"
         >
-          <div className="space-y-6">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-serif font-normal tracking-tight text-[#09090b] leading-[1.05]">
+          <div className="space-y-4 sm:space-y-6">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-serif font-normal tracking-tight text-[#09090b] leading-[1.05]">
               Let&apos;s <br />
               <span className="italic font-normal">Connect.</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-md pt-2">
+            <p className="text-sm sm:text-base md:text-lg text-neutral-600 leading-relaxed max-w-md pt-1 sm:pt-2">
               Have a project in mind or just want to say hi? We&apos;re always
               open to discussing new ideas and creative collaborations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 pt-2 sm:pt-4">
             <div>
-              <span className="block font-mono text-[11px] uppercase tracking-widest text-neutral-400 font-semibold mb-2">
+              <span className="block font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-neutral-400 font-semibold mb-1.5 sm:mb-2">
                 EMAIL
               </span>
               <a
                 href="mailto:testuser@gmail.com"
-                className="text-base sm:text-lg font-bold text-[#09090b] hover:opacity-75 transition-opacity"
+                className="text-base sm:text-lg font-bold text-[#09090b] hover:opacity-75 transition-opacity break-all sm:break-normal"
               >
                 testuser@gmail.com
               </a>
             </div>
 
             <div>
-              <span className="block font-mono text-[11px] uppercase tracking-widest text-neutral-400 font-semibold mb-2">
+              <span className="block font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-neutral-400 font-semibold mb-1.5 sm:mb-2">
                 OFFICE
               </span>
               <span className="text-base sm:text-lg font-bold text-[#09090b]">
@@ -137,11 +137,11 @@ export default function ContactSection() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-7"
+          className="lg:col-span-7 w-full"
         >
-          <div className="relative rounded-3xl p-8 sm:p-10 md:p-12 border border-black/10 bg-black/[0.02] shadow-[0_20px_50px_rgba(0,0,0,0.03)] backdrop-blur-sm">
-            <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="relative rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border border-black/10 bg-black/[0.02] shadow-[0_20px_50px_rgba(0,0,0,0.03)] backdrop-blur-sm">
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8 md:space-y-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                 {/* Full Name */}
                 <div className="space-y-2">
                   <label
@@ -240,11 +240,11 @@ export default function ContactSection() {
               )}
 
               {/* Submit Button & Feedback */}
-              <div className="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`px-8 py-3.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 shadow-md ${
+                  className={`w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 shadow-md text-center ${
                     loading
                       ? "bg-neutral-400 text-white cursor-not-allowed"
                       : "bg-[#09090b] text-[#FFFFFE] hover:bg-neutral-800 active:scale-[0.98] cursor-pointer"

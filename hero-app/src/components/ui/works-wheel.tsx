@@ -443,14 +443,14 @@ export function WorksWheel({
       </div>
       <div
         ref={titleRef}
-        className="pointer-events-none absolute top-1/2 left-[8%] -translate-y-1/2 tracking-tight opacity-0"
+        className="pointer-events-none absolute top-[12%] sm:top-1/2 left-1/2 md:left-[8%] -translate-x-1/2 md:translate-x-0 -translate-y-1/2 tracking-tight opacity-0 text-center md:text-left z-20 w-full max-w-[90vw] md:max-w-none"
         style={{ fontSize: metrics.title }}
       >
         {items[active]?.title}
       </div>
 
       <ol
-        className="text-muted-foreground absolute top-[7.5%] right-[2.5%] text-right leading-[1.75]"
+        className="hidden md:block text-muted-foreground absolute top-[7.5%] right-[2.5%] text-right leading-[1.75]"
         style={{ fontSize: metrics.index }}
       >
         {items.map((item, i) => (

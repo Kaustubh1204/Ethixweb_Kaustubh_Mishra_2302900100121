@@ -428,7 +428,7 @@ EthixWeb brings together full-stack web engineering and a visual approach that c
 
 The frontend focuses on responsive layouts, cinematic media, interactive motion, and component-based development. The backend provides the API and data-processing layer, with PostgreSQL and JWT-based authentication forming part of the specified architecture.
 
-The project's defining visual direction is the combination of a contemporary web experience with a hero presentation that depicts the real India. Rather than separating technology from visual storytelling, EthixWeb uses both to create a cohesive digital platform.
+The project's defining visual direction is the combination of a contemporary web experience with a hero presentation that depicts the real India. Rather than separating technology from visual storytelling, EthixWeb uses both to create a cohesive digital platform. 
 
 ---
 

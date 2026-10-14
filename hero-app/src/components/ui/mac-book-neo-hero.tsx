@@ -121,10 +121,11 @@ export function FrameSequenceHero({
         const root = spacerRef.current;
         if (!root) return;
 
+        const isMobile = window.innerWidth < 768;
         trigger = ScrollTrigger.create({
           trigger: root,
           start: "top top",
-          end: "+=500%",
+          end: isMobile ? "+=280%" : "+=500%",
           pin: true,
           pinSpacing: true,
           scrub: 1,

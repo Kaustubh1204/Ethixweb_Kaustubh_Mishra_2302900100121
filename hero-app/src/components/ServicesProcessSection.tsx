@@ -28,23 +28,23 @@ const STEPS = [
 
 export default function ServicesProcessSection() {
   return (
-    <section className="relative w-full border-t border-black/10 bg-[#FFFFFE] py-16 md:py-24">
+    <section className="relative w-full border-t border-black/10 bg-[#FFFFFE] py-12 sm:py-16 md:py-24">
       {/* Section Header: Process */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-mono font-medium tracking-wider uppercase text-neutral-600 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 text-center mb-8 sm:mb-12">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-mono font-medium tracking-wider uppercase text-neutral-600 mb-3 sm:mb-4">
           <span>Execution Process</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#09090b]">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#09090b]">
           Audit First. Build Second. Optimize Forever.
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
           Every engagement follows a clear process, so you know what we're doing, why it matters, and what comes next.
         </p>
       </div>
 
       {/* 4 Steps Timeline */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-12">
-        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 mt-8 sm:mt-12">
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Subtle connecting line for desktop */}
           <div
             aria-hidden="true"

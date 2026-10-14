@@ -216,13 +216,13 @@ export const HeroApp: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="hero-app-wrapper relative w-full h-screen bg-[#000000] overflow-hidden"
+      className="hero-app-wrapper relative w-full h-[100svh] bg-[#000000] overflow-hidden"
     >
       {/* Full-Viewport Preloader Overlay */}
       <Preloader ref={preloaderRef} />
 
       {/* Hero section */}
-      <section className="hero relative w-full max-w-full h-screen p-0 origin-center overflow-hidden">
+      <section className="hero relative w-full max-w-full h-[100svh] p-0 origin-center overflow-hidden">
         <HeroImages />
       </section>
 

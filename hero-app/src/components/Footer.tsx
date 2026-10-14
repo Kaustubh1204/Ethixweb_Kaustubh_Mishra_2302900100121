@@ -3,15 +3,15 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#FFFFFE] text-[#09090b] border-t border-black/10 pt-16 pb-12 selection:bg-black selection:text-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <footer className="w-full bg-[#FFFFFE] text-[#09090b] border-t border-black/10 pt-10 sm:pt-14 md:pt-16 pb-8 sm:pb-12 selection:bg-black selection:text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Top Callout / Headline Banner */}
-        <div className="pb-14 border-b border-black/10 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+        <div className="pb-10 sm:pb-14 border-b border-black/10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 sm:gap-8">
           <div className="max-w-2xl">
-            <span className="font-mono text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-3 block">
+            <span className="font-mono text-[11px] sm:text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-2 sm:mb-3 block">
               Ethixweb Digital Operations
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#09090b] leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-[#09090b] leading-tight">
               Revamp your online presence with bespoke designs crafted for your
               business success.
             </h2>
@@ -21,14 +21,14 @@ export default function Footer() {
             href="https://calendly.com/ethixweb-agency/30min?month=2026-06"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#09090b] text-[#FFFFFE] text-xs font-mono font-semibold uppercase tracking-wider hover:bg-neutral-800 active:scale-[0.98] transition-all shadow-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#09090b] text-[#FFFFFE] text-xs font-mono font-semibold uppercase tracking-wider hover:bg-neutral-800 active:scale-[0.98] transition-all shadow-sm"
           >
             Book an appointment ↗
           </a>
         </div>
 
         {/* Multi-column Navigation & Contact Details */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 py-14 border-b border-black/10 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 py-10 sm:py-14 border-b border-black/10 text-sm">
           {/* Column 1: Contact Details */}
           <div className="md:col-span-2 space-y-4">
             <h3 className="font-mono text-xs uppercase tracking-widest text-neutral-500 font-semibold">

@@ -5,17 +5,23 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 1.5rem 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .sh-wrap {
+    padding: 3.5rem 1rem;
+  }
 }
 
 .sh-pill {
   font-family: system-ui, sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.25em;
-  padding: 0.6rem 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  padding: 0.45rem 1.4rem;
   border: 1.5px solid var(--ink);
   border-radius: 999px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .sh-title {

@@ -2,7 +2,6 @@ import React from "react";
 import type { Metadata } from "next";
 import Paragraph from "@/components/Paragraph";
 import PaperCurlDemo from "@/components/ui/paper-curl-demo";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "About Us — Ethixweb",
@@ -23,9 +22,9 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Paper Curl Carousel Section: Text-only slides */}
-      <section className="relative w-full border-t border-black/10 bg-[#FFFFFE] py-12 md:py-20">
-        <div className="w-full max-w-6xl mx-auto px-4 md:px-8">
-          <div className="rounded-3xl overflow-hidden border border-black/10 shadow-2xl bg-[#FFFFFE]">
+      <section className="relative w-full border-t border-black/10 bg-[#FFFFFE] py-8 sm:py-12 md:py-20">
+        <div className="w-full max-w-6xl mx-auto px-3 sm:px-6 md:px-8">
+          <div className="rounded-2xl sm:rounded-3xl overflow-hidden border border-black/10 shadow-2xl bg-[#FFFFFE]">
             <PaperCurlDemo />
           </div>
         </div>

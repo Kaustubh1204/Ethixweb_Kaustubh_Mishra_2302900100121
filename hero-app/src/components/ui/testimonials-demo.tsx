@@ -37,8 +37,8 @@ const thirdColumn = [testimonials[0], testimonials[3]];
 
 export function Testimonials() {
   return (
-    <section className="bg-[#FFFFFE] text-[#09090b] py-24 relative overflow-hidden border-t border-black/10">
-      <div className="container z-10 mx-auto px-6">
+    <section className="bg-[#FFFFFE] text-[#09090b] py-14 sm:py-20 md:py-24 relative overflow-hidden border-t border-black/10">
+      <div className="container z-10 mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,20 +47,20 @@ export function Testimonials() {
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto text-center"
         >
           <div className="flex justify-center">
-            <div className="border border-black/10 bg-black/5 py-1 px-4 rounded-full text-xs font-mono tracking-widest uppercase text-amber-600 font-medium">
+            <div className="border border-black/10 bg-black/5 py-1 px-3.5 sm:px-4 rounded-full text-xs font-mono tracking-widest uppercase text-amber-600 font-medium">
               Testimonials
             </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#09090b] mt-5">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-[#09090b] mt-4 sm:mt-5">
             What our users say
           </h2>
-          <p className="text-center mt-4 text-black/60 text-base md:text-lg max-w-md">
+          <p className="text-center mt-3 sm:mt-4 text-black/60 text-sm sm:text-base md:text-lg max-w-md">
             See what our customers have to say about us.
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-16 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[740px] overflow-hidden">
+        <div className="flex justify-center gap-4 sm:gap-6 mt-10 sm:mt-16 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[520px] sm:max-h-[640px] md:max-h-[740px] overflow-hidden">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />

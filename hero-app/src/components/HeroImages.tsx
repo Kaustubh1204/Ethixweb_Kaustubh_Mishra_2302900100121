@@ -117,9 +117,9 @@ export const HeroVisuals: React.FC<HeroVisualsProps> = ({
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-contain select-none pointer-events-none"
+          className="w-full h-full object-cover select-none pointer-events-none"
           style={{
-            objectFit: "contain",
+            objectFit: "cover",
             width: "100%",
             height: "100%",
             maxWidth: "100%",

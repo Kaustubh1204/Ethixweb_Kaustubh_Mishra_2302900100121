@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Fascinate&family=Fascinate+Inline&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Imperial+Script&family=Instrument+Serif:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Limelight&family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rouge+Script&family=Special+Gothic+Condensed+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Fascinate&family=Fascinate+Inline&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Imperial+Script&family=Instrument+Serif:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Limelight&family=Lobster&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rouge+Script&family=Special+Gothic+Condensed+One&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -26,6 +26,10 @@
 
 .font-fascinate {
   font-family: 'Fascinate', cursive, sans-serif !important;
+}
+
+.font-pt-serif {
+  font-family: 'PT Serif', Georgia, serif !important;
 }
 
 .font-gothic {
@@ -247,46 +251,11 @@ html.lenis, html.lenis body {
 
 @media (max-width: 900px) {
   .hero {
-    padding: 1.5em;
-  }
-
-  .pre-loader-overlay {
-    padding: 16px 20px !important;
-  }
-
-  .counter {
-    height: 70px !important;
-    font-size: 70px !important;
-    line-height: 100px !important;
-    clip-path: polygon(0 0, 100% 0, 100% 70px, 0 70px) !important;
-  }
-
-  .digit-1,
-  .digit-2,
-  .digit-3 {
-    width: 32px !important;
-    top: -10px !important;
-  }
-
-  .num {
-    height: 100px !important;
-    line-height: 100px !important;
-  }
-
-  .loading-label {
-    font-size: 30px !important;
-    line-height: 40px !important;
-    padding-bottom: 4px !important;
-  }
-
-  .percent-symbol {
-    font-size: 45px !important;
-    line-height: 45px !important;
-    padding-bottom: 4px !important;
+    padding: 0;
   }
 
   nav > div {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
@@ -522,15 +491,28 @@ nav {
 
 @media (max-width: 768px) {
   .fsh-cards {
-    bottom: 9%;
+    bottom: 4%;
     width: 92%;
-    max-width: 420px;
+    max-width: 380px;
+  }
+
+  .fsh-card-inner {
+    padding: 1rem 1.15rem;
+    border-radius: 1.1rem;
+  }
+
+  .fsh-card-desc {
+    margin-bottom: 0.75rem;
+  }
+
+  .fsh-canvas {
+    max-height: 58vh;
   }
 }
 
 @media (max-height: 700px) {
   .fsh-cards {
-    bottom: 6%;
+    bottom: 3%;
   }
 }
 

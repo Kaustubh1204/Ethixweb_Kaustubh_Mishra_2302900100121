@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Paragraph from "@/components/Paragraph";
 import ServicesGlassFolders from "@/components/ServicesGlassFolders";
 import ServicesProcessSection from "@/components/ServicesProcessSection";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Services & Operations — Ethixweb",
@@ -21,25 +20,25 @@ export default function ServicesPage() {
           Description: "From high-performing websites and AI-powered solutions to digital marketing, analytics, and ongoing technical support — six connected service areas, one experienced team to build, manage, and scale your digital presence."
           Buttons: "Start a Project" and "Explore Services"
       ========================================================= */}
-      <section className="relative w-full pb-14">
+      <section className="relative w-full pb-10 sm:pb-14">
         <Paragraph
           heading="Services"
           subtitle="Everything Your Business Needs to Grow."
           supportingText="From high-performing websites and AI-powered solutions to digital marketing, analytics, and ongoing technical support — six connected service areas, one experienced team to build, manage, and scale your digital presence."
         />
 
-        <div className="flex flex-wrap items-center justify-center gap-4 -mt-10 mb-8 z-20 relative">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 -mt-6 sm:-mt-10 mb-8 z-20 relative px-4 max-w-md sm:max-w-none mx-auto">
           <a
             href="https://calendly.com/ethixweb-agency/30min?month=2026-06"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3.5 rounded-full bg-[#09090b] text-[#FFFFFE] text-xs font-mono font-semibold uppercase tracking-wider hover:bg-neutral-800 active:scale-[0.98] transition-all shadow-md cursor-pointer"
+            className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full bg-[#09090b] text-[#FFFFFE] text-xs font-mono font-semibold uppercase tracking-wider hover:bg-neutral-800 active:scale-[0.98] transition-all shadow-md cursor-pointer"
           >
             Start a Project ↗
           </a>
           <a
             href="#service-overview"
-            className="px-8 py-3.5 rounded-full bg-black/5 border border-black/10 text-[#09090b] text-xs font-mono font-semibold uppercase tracking-wider hover:bg-black/10 active:scale-[0.98] transition-all cursor-pointer"
+            className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full bg-black/5 border border-black/10 text-[#09090b] text-xs font-mono font-semibold uppercase tracking-wider hover:bg-black/10 active:scale-[0.98] transition-all cursor-pointer"
           >
             Explore Services ↓
           </a>

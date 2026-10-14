@@ -702,7 +702,7 @@ export function GlassFolder({
       data-open={open || undefined}
       data-entered={entered || undefined}
       data-place={labelPlacement}
-      style={{ width, height: (H + HEADROOM) * k, ...style }}
+      style={{ width, height: (H + HEADROOM) * k, maxWidth: "100%", ...style }}
     >
       <style>{GF_CSS}</style>
       <div className="gf-stage" style={{ transform: "translateY(" + HEADROOM * k + "px) scale(" + k + ")" }}>

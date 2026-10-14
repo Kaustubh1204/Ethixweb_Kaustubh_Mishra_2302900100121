@@ -13,8 +13,22 @@ import GlassFolder from "@/components/ui/glass-folder-cards";
  * 6. Technical Support
  */
 export default function ServicesGlassFolders() {
+  const [folderWidth, setFolderWidth] = React.useState(340);
+
+  React.useEffect(() => {
+    const update = () => {
+      if (typeof window !== "undefined") {
+        const available = window.innerWidth - 36;
+        setFolderWidth(Math.min(340, Math.max(260, available)));
+      }
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
-    <div className="relative w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 md:px-12 py-12">
+    <div className="relative w-full flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 md:px-12 py-8 sm:py-12">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 text-foreground opacity-[0.04]"
@@ -24,9 +38,10 @@ export default function ServicesGlassFolders() {
         }}
       />
 
-      <div className="relative grid max-w-7xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-end justify-items-center gap-x-12 gap-y-16">
+      <div className="relative grid max-w-7xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-end justify-items-center gap-x-8 lg:gap-x-12 gap-y-12 sm:gap-y-16">
         {/* Folder 1: Website Development */}
         <GlassFolder
+          width={folderWidth}
           label="Website Development"
           meta="Digital experiences built for performance, usability, and growth."
           art="aurora"
@@ -62,6 +77,7 @@ export default function ServicesGlassFolders() {
 
         {/* Folder 2: AI Solutions */}
         <GlassFolder
+          width={folderWidth}
           label="AI Solutions"
           meta="Practical AI solutions that improve customer experience and operations."
           art="ember"
@@ -97,6 +113,7 @@ export default function ServicesGlassFolders() {
 
         {/* Folder 3: Digital Marketing */}
         <GlassFolder
+          width={folderWidth}
           label="Digital Marketing"
           meta="Reach the right audience, generate qualified leads, and improve conversions."
           art="dusk"
@@ -142,6 +159,7 @@ export default function ServicesGlassFolders() {
 
         {/* Folder 4: Analytics & Tracking */}
         <GlassFolder
+          width={folderWidth}
           label="Analytics & Tracking"
           meta="Understand performance through connected data and actionable reporting."
           art="glacier"
@@ -172,6 +190,7 @@ export default function ServicesGlassFolders() {
 
         {/* Folder 5: Accessibility */}
         <GlassFolder
+          width={folderWidth}
           label="Accessibility"
           meta="Make digital experiences more accessible, usable, and inclusive."
           art="verdant"
@@ -197,6 +216,7 @@ export default function ServicesGlassFolders() {
 
         {/* Folder 6: Technical Support */}
         <GlassFolder
+          width={folderWidth}
           label="Technical Support"
           meta="Keep your digital infrastructure, content, and integrations reliable."
           art="aurora"

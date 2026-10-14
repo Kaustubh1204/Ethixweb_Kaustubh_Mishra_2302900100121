@@ -41,7 +41,7 @@ export default function Paragraph({
   }
 
   return (
-    <section className="relative w-full min-h-[60vh] py-16 md:py-24 px-6 bg-[#FFFFFE] text-[#000] flex flex-col items-center justify-center border-t border-black/10 overflow-hidden">
+    <section className="relative w-full min-h-[45vh] sm:min-h-[55vh] py-10 sm:py-16 md:py-24 px-4 sm:px-6 bg-[#FFFFFE] text-[#000] flex flex-col items-center justify-center border-t border-black/10 overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-200 via-transparent to-transparent" />
 
@@ -58,7 +58,7 @@ export default function Paragraph({
 
         {/* Supporting description if provided */}
         {supportingText && (
-          <p className="text-base sm:text-lg md:text-xl text-[#000]/70 max-w-3xl leading-relaxed mt-2 font-normal">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#000]/70 max-w-3xl leading-relaxed mt-1 sm:mt-2 font-normal px-2">
             {supportingText}
           </p>
         )}
